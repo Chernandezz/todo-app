@@ -1,2 +1,64 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+/* src/theme/variables.scss */
+
+/* ——————————————————————————————————————————————
+   1) Colores base (asegura buen contraste WCAG ≥ 4.5:1)
+   —————————————————————————————————————————————— */
+   :root {
+    // Primary
+    --ion-color-primary:    #4A90E2;  /* Azul claro */
+    --ion-color-primary-rgb: 74,144,226;
+    --ion-color-primary-contrast:    #ffffff;
+    --ion-color-primary-contrast-rgb:255,255,255;
+    --ion-color-primary-shade:       #3F7FC1;
+    --ion-color-primary-tint:        #5AA9E7;
+  
+    // Secondary
+    --ion-color-secondary:    #50E3C2; /* Turquesa */
+    --ion-color-secondary-rgb:80,227,194;
+    --ion-color-secondary-contrast:    #ffffff;
+    --ion-color-secondary-contrast-rgb:255,255,255;
+    --ion-color-secondary-shade:       #45C9A9;
+    --ion-color-secondary-tint:        #62E8CD;
+  
+    // Danger, Warning, Success, Medium, Light, Dark…
+    --ion-color-success:   #27AE60;
+    --ion-color-warning:   #F5A623;
+    --ion-color-danger:    #E74C3C;
+    --ion-color-medium:    #95A5A6;
+    --ion-color-light:     #F8F9FA;
+    --ion-color-dark:      #2C3E50;
+  
+    /* Fondo y texto */
+    --ion-background-color:       #ffffff;
+    --ion-background-color-rgb:   255,255,255;
+    --ion-text-color:             #2C3E50;
+    --ion-text-color-rgb:         44,62,80;
+  }
+  
+  /* ——————————————————————————————————————————————
+     2) Gradientes para toolbar o botones
+     —————————————————————————————————————————————— */
+  :root {
+    /* Como override de toolbar: */
+    --ion-toolbar-background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+    --ion-toolbar-color:      #ffffff;
+  
+    /* Para botones “primary” si quieres gradient: */
+    --ion-color-primary:           transparent;
+    --ion-color-primary-rgb:       0,0,0; /* no se usa */
+    --ion-color-primary-contrast:  #ffffff;
+  
+    /* y defines esto en global.scss o tus estilos component: */
+    ion-button[color="primary"] {
+      background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%) !important;
+      color: var(--ion-color-primary-contrast) !important;
+    }
+  }
+  
+  /* ——————————————————————————————————————————————
+     3) Ajustes de contraste extra (si necesitas más “shade/tint”)
+     —————————————————————————————————————————————— */
+  @function contrast($color) {
+    @return if(contrast-ratio($color, #000) > contrast-ratio($color, #fff), #000, #fff);
+  }
+  
